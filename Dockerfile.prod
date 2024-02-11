@@ -1,0 +1,17 @@
+FROM node:20-alpine
+
+# Crear directorio de trabajo
+WORKDIR /app
+
+# Instalar dependencias
+COPY package*.json ./
+RUN npm install
+
+# Copiar archivos del proyecto
+COPY . .
+
+# Compilar TypeScript a JavaScript
+RUN npm run build
+
+EXPOSE 3000
+CMD [ "npm", "start" ]

@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: app-node-img
+    container_name: app-node-container
+    command: sh -c "./start.sh"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    user: "${UID}:${GID}"

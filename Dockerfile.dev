@@ -1,0 +1,20 @@
+FROM node:20-alpine
+
+# Crear directorio de trabajo
+WORKDIR /app
+
+# Instalar dependencias
+COPY package*.json ./
+RUN npm install
+
+# Copiar archivos del proyecto
+COPY . .
+
+# Dar permisos de ejecución al script
+RUN chmod +x ./start.sh
+
+# Exponer puerto
+EXPOSE 3000
+
+# Comando para correr el proyecto en modo desarrollo
+# CMD [ "npm", "run", "watch" ]
